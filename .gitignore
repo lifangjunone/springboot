@@ -14,12 +14,12 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-springboot-web-quickstart/.idea
-springboot-web-quickstart/.mvn
-springboot-web-quickstart/HELP.md
-springboot-web-quickstart/mvnw
-springboot-web-quickstart/mvnw.cmd
-springboot-web-quickstart/target
+*/.idea
+*/.mvn
+*/HELP.md
+*/mvnw
+*/mvnw.cmd
+*/target
 .idea
 .mvn
 HELP.md
