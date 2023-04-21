@@ -19,3 +19,17 @@
 - @Service：　Service层的bean对象
 - ＠Repository: Dao层的bean对象
 - ＠Component: bean的基础注解，不属于以上三类的，用此注解
+## SQL 操作
+```sql
+desc emp
+
+rename table tb_emp to emp
+
+alter table emp add hobby varchar(32) comment '爱好'
+
+alter table emp modify hobby varchar(64) comment '用户爱好'
+
+alter table emp change hobby us_hobby varchar(16) comment '爱好'
+
+alter table emp drop column us_hobby
+```
