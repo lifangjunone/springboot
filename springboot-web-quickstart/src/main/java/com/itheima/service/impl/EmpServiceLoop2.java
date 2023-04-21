@@ -5,10 +5,12 @@ import com.itheima.projo.Emp;
 import com.itheima.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component  // 将当前类交给IOC容器管理,成为IOC容器中的bean
+//@Component  // 将当前类交给IOC容器管理,成为IOC容器中的bean
+@Service
 public class EmpServiceLoop2 implements EmpService {
     // private EmpDao empDao = new EmpDaoXml();
 

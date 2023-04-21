@@ -13,3 +13,9 @@
 > Dependency injection, 简称 DI. 容器为应用程序提供运行时所依赖的资源,称之为依赖注入.
 #### Bean对象
 > IOC 容器中创建,管理的对象,称之为 bean.
+## IOC 详解
+#### IOC的bean类型
+- @Controller: Controller层的bean对象
+- @Service：　Service层的bean对象
+- ＠Repository: Dao层的bean对象
+- ＠Component: bean的基础注解，不属于以上三类的，用此注解
