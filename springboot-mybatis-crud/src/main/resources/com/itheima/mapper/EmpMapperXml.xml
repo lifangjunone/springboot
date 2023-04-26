@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.mapper.EmpMapperXml">
 
+    <sql id="allFieldSelect">
+        select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time from emp
+    </sql>
+
     <update id="update">
         update emp
         <set>
@@ -19,9 +23,15 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteIds">
+        delete from emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
     <select id="list" resultType="com.itheima.pojo.Emp">
-        select *
-        from emp
+        <include refid="allFieldSelect"/>
         <where>
             <if test="name != null">
                 name like concat('%', #{name}, '%')

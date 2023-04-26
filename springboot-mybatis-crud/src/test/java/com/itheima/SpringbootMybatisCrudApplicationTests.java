@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -74,6 +76,12 @@ class SpringbootMybatisCrudApplicationTests {
 				LocalDate.of(2010, 1, 1),
 				LocalDate.of(2023, 4,  24));
 		System.out.println(empList);
+	}
+
+	@Test
+	public void testDeleteIds() {
+		List<Integer> ids = Arrays.asList(13, 14, 15);
+		empMapperXml.deleteIds(ids);
 	}
 
 }
