@@ -17,4 +17,7 @@ public interface EmpMapper {
 
     @Select("select * from emp limit #{page}, #{pageSize}")
     List<Emp> page(Integer page, Integer pageSize);
+
+    @Select("select * from emp")
+    List<Emp> page2();
 }

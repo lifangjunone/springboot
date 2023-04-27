@@ -33,4 +33,11 @@ public class EmpController {
         PageBean pageBean = empService.page((page-1)*pageSize, pageSize);
         return Result.success(pageBean);
     }
+
+    @GetMapping("/page2")
+    public Result page2(@RequestParam(defaultValue = "1") Integer page,
+                        @RequestParam(defaultValue = "10") Integer pageSize) {
+        PageBean pageBean = empService.page2(page, pageSize);
+        return Result.success(pageBean);
+    }
 }

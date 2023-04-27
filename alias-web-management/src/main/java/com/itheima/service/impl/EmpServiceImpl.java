@@ -1,5 +1,7 @@
 package com.itheima.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
@@ -29,4 +31,12 @@ public class EmpServiceImpl implements EmpService {
         return pageBean;
     }
 
+    @Override
+    public PageBean page2(Integer page, Integer pageSize) {
+        PageHelper.startPage(page, pageSize);
+        List<Emp> empList = empMapper.page2();
+        Page<Emp> p = (Page<Emp>) empList;
+        PageBean pageBean = new PageBean(p.getTotal(),p.getResult());
+        return pageBean;
+    }
 }

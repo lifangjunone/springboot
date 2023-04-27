@@ -10,4 +10,6 @@ public interface EmpService {
     List<Emp> list();
 
     PageBean page(Integer page, Integer pageSize);
+
+    PageBean page2(Integer page, Integer pageSize);
 }
