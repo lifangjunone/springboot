@@ -4,6 +4,7 @@ import com.itheima.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -20,4 +21,8 @@ public interface EmpMapper {
 
     @Select("select * from emp")
     List<Emp> page2();
+
+@Select("select * from emp where name like concat('%', #{name}, '%') and gender=#{gender} and" +
+        " update_time between #{begin} and #{end}")
+    List<Emp> page3(String name, Short gender, LocalDate begin, LocalDate end);
 }
