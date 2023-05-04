@@ -2,8 +2,33 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.mapper">
-    <select id="selectBlog" resultType="Blog">
-        select * from Blog where id = #{id}
+<mapper namespace="com.itheima.mapper.EmpMapper">
+
+    <insert id="create">
+
+    </insert>
+
+    <delete id="delete">
+        delete from emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="page4" resultType="com.itheima.pojo.Emp">
+        select * from emp
+        <where>
+            <if test="name !=null and name !=''">
+                name like concat('%', #{name}, '%')
+            </if>
+            <if test="gender !=null">
+                and gender = #{gender}
+            </if>
+            <if test="begin !=null and end !=null">
+                and entrydate between #{begin} and #{end}
+            </if>
+        </where>
+        order by update_time desc
     </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,7 +24,13 @@ public interface EmpMapper {
     @Select("select * from emp")
     List<Emp> page2();
 
-@Select("select * from emp where name like concat('%', #{name}, '%') and gender=#{gender} and" +
-        " update_time between #{begin} and #{end}")
+    @Select("select * from emp where name like concat('%', #{name}, '%') and gender=#{gender} and" +
+            " update_time between #{begin} and #{end}")
     List<Emp> page3(String name, Short gender, LocalDate begin, LocalDate end);
+
+    List<Emp> page4(String name, Short gender, LocalDate begin, LocalDate end);
+
+    Integer delete(List<Integer> ids);
+
+    Emp create(Emp emp);
 }
