@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -69,6 +70,11 @@ public class EmpServiceImpl implements EmpService {
     public Emp create(Emp emp) {
         emp.setCreateTime(LocalDateTime.now());
         emp.setUpdateTime(LocalDateTime.now());
+        if (null == emp.getPassword()) {
+            emp.setPassword("123456");
+        } else if (Objects.equals(emp.getPassword(), "")) {
+            emp.setPassword("123456");
+        }
         empMapper.create(emp);
         return emp;
     }

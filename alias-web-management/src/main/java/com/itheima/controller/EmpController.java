@@ -73,7 +73,7 @@ public class EmpController {
     @PostMapping
     public Result create(@RequestBody Emp emp) {
         log.info("{}", emp);
-        emp = empService.create(emp);
-        return Result.success(emp);
+        Emp emp1 = empService.create(emp);
+        return Result.success(emp1);
     }
 }

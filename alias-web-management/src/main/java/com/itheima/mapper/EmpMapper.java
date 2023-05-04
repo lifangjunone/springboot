@@ -1,8 +1,6 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Emp;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -32,5 +30,5 @@ public interface EmpMapper {
 
     Integer delete(List<Integer> ids);
 
-    Emp create(Emp emp);
+    Integer create(Emp emp);
 }
