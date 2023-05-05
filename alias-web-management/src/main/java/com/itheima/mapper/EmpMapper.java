@@ -31,4 +31,9 @@ public interface EmpMapper {
     Integer delete(List<Integer> ids);
 
     Integer create(Emp emp);
+
+    @Select("select * from emp where id=#{id}")
+    Emp getById(Integer id);
+
+    Integer update(Emp emp);
 }

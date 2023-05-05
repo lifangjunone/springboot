@@ -6,6 +6,10 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,12 +21,20 @@ import java.util.UUID;
 @Component
 public class OssUtils {
 
-    String endpoint = "xxx";
-    String accessKeyId = "xxx";
-    String accessKeySecret = "xxx";
-    String bucketName = "java-usage";
+    // String endpoint = "xxx";
+    // String accessKeyId = "xxx";
+    // String accessKeySecret = "xxx";
+    // String bucketName = "java-usage";
+
+    @Autowired
+    private OssProperties ossProperties;
 
     public String Upload(MultipartFile file) throws IOException {
+
+        String endpoint = ossProperties.getEndpoint();
+        String accessKeyId = ossProperties.getAccessKeyId();
+        String accessKeySecret = ossProperties.getAccessKeySecret();
+        String bucketName = ossProperties.getBucketName();
 
         InputStream inputStream = file.getInputStream();
         String objectName = file.getOriginalFilename();

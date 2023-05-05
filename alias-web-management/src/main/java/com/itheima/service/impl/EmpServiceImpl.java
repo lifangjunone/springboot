@@ -78,4 +78,18 @@ public class EmpServiceImpl implements EmpService {
         empMapper.create(emp);
         return emp;
     }
+
+    @Override
+    public Emp getById(Integer id) {
+        Emp emp = empMapper.getById(id);
+        return emp;
+    }
+
+    @Override
+    public Emp update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.update(emp);
+        Emp emp1 = empMapper.getById(emp.getId());
+        return emp1;
+    }
 }

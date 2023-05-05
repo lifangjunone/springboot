@@ -21,4 +21,8 @@ public interface EmpService {
     Integer delete(List<Integer> ids);
 
     Emp create(Emp emp);
+
+    Emp getById(Integer id);
+
+    Emp update(Emp emp);
 }
