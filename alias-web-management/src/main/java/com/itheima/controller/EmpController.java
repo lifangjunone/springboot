@@ -88,4 +88,10 @@ public class EmpController {
         Emp emp1 = empService.update(emp);
         return Result.success(emp1);
     }
+
+    @GetMapping("/error/{id}")
+    public Result getByIdReturnError(@PathVariable Integer id) {
+        Emp emp = empService.getByIdReturnError(id);
+        return Result.success(emp);
+    }
 }

@@ -98,4 +98,11 @@ public class EmpServiceImpl implements EmpService {
         Emp emp1 = empMapper.getByUsernameAndPassword(emp);
         return emp1;
     }
+
+    @Override
+    public Emp getByIdReturnError(Integer id) {
+        Emp emp = empMapper.getById(id);
+        int x = 1/0;
+        return emp;
+    }
 }

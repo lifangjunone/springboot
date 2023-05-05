@@ -27,4 +27,6 @@ public interface EmpService {
     Emp update(Emp emp);
 
     Emp login(Emp emp);
+
+    Emp getByIdReturnError(Integer id);
 }
