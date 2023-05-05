@@ -18,8 +18,8 @@ mybatis:
     map-underscore-to-camel-case: true
 
 logging:
-  leven:
-    root: info
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
 
 aliyun:
   oss:
