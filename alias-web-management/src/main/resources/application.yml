@@ -19,7 +19,7 @@ mybatis:
 
 logging:
   leven:
-    root: INFO
+    root: info
 
 aliyun:
   oss:
