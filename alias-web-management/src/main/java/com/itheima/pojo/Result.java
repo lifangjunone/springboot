@@ -26,4 +26,12 @@ public class Result {
     public static Result error(String msg) {
         return new Result(10002, msg, new HashMap<>());
     }
+
+    public static Result permissionDenied() {
+        return new Result(10003, "permission denied", new HashMap<>());
+    }
+
+    public static Result notLogin() {
+        return new Result(10004, "please login in !!!", new HashMap<>());
+    }
 }

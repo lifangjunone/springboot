@@ -92,4 +92,10 @@ public class EmpServiceImpl implements EmpService {
         Emp emp1 = empMapper.getById(emp.getId());
         return emp1;
     }
+
+    @Override
+    public Emp login(Emp emp) {
+        Emp emp1 = empMapper.getByUsernameAndPassword(emp);
+        return emp1;
+    }
 }

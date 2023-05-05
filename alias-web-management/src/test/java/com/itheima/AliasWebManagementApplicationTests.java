@@ -6,18 +6,25 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-@SpringBootTest
+//@SpringBootTest
 class AliasWebManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
 	@Test
 	void ossTest() throws Exception {
 		// Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
@@ -65,4 +72,26 @@ class AliasWebManagementApplicationTests {
 		}
 	}
 
+	@Test
+	void genJWTTest() {
+
+		Map<String, Object> claims = new HashMap<>();
+		claims.put("id", 1);
+		claims.put("name", "god");
+		String jwtStr = Jwts.builder()
+				.signWith(SignatureAlgorithm.HS256, "god is girl") // 签名算法，　秘钥字符串
+				.setClaims(claims) // 用户自定义负载信息
+				.setExpiration(new Date(System.currentTimeMillis() + 3600 * 1000)) // 有效期为一小时
+				.compact();
+		System.out.println(jwtStr);
+	}
+
+	@Test
+	void parseJWTTest() {
+		Claims claims = Jwts.parser()
+				.setSigningKey("god is girl")
+				.parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZ29kIiwiaWQiOjEsImV4cCI6MTY4MzI2Njc1NX0.azOS0SqChHpcwTOJMAHUJy-YDF7At9BMcjMiGmNdmNM")
+				.getBody();
+		System.out.println(claims);
+	}
 }
