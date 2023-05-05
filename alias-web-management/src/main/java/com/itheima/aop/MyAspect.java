@@ -16,6 +16,7 @@ public class MyAspect {
     private void pt() {}
 
 
+    @Pointcut("@annotation(com.itheima.aop.MyLog)")
     @Before("pt()")
     public void before() {
         log.info("before ...");

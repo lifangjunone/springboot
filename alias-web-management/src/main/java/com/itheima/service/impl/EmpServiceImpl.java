@@ -2,6 +2,7 @@ package com.itheima.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.itheima.aop.MyLog;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
@@ -99,6 +100,7 @@ public class EmpServiceImpl implements EmpService {
         return emp1;
     }
 
+    @MyLog
     @Override
     public Emp getByIdReturnError(Integer id) {
         Emp emp = empMapper.getById(id);
