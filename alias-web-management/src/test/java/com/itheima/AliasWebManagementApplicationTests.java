@@ -9,7 +9,10 @@ import com.aliyun.oss.model.PutObjectResult;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.dom4j.Document;
+import org.dom4j.Element;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.FileInputStream;
@@ -17,9 +20,14 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import org.dom4j.io.SAXReader;
 
-//@SpringBootTest
+@SpringBootTest
 class AliasWebManagementApplicationTests {
+
+	@Autowired
+	private SAXReader saxReader;
+
 
 	@Test
 	void contextLoads() {
@@ -93,5 +101,14 @@ class AliasWebManagementApplicationTests {
 				.parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiZ29kIiwiaWQiOjEsImV4cCI6MTY4MzI2Njc1NX0.azOS0SqChHpcwTOJMAHUJy-YDF7At9BMcjMiGmNdmNM")
 				.getBody();
 		System.out.println(claims);
+	}
+
+	@Test
+	void parseXML() throws Exception {
+		Document doc = saxReader.read(this.getClass().getClassLoader().getResource("1.xml"));
+		Element rootElement = doc.getRootElement();
+		String name = rootElement.element("name").getText();
+		String age = rootElement.element("age").getText();
+		System.out.println(name + ":" + age);
 	}
 }
