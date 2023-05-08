@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
@@ -38,6 +39,7 @@ public class DeptController {
      * @param id
      * @return
      */
+    @Log
     @GetMapping("/{id}")
     public Result get(@PathVariable Integer id) {
         Dept dept = deptService.get(id);
@@ -47,6 +49,7 @@ public class DeptController {
         return Result.success(dept);
     }
 
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
         Boolean res = deptService.delete(id);
@@ -57,6 +60,7 @@ public class DeptController {
         }
     }
 
+    @Log
     @PostMapping
     public Result create(@RequestBody Dept dept) {
         log.info(String.valueOf(dept));
